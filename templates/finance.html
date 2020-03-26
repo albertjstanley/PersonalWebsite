@@ -1,0 +1,72 @@
+{% block javascript %}
+<script>
+    function greet(){
+        let name = document.querySelector('#name').value;
+        if (name == ""){
+            alert("Hello!")
+        }
+        else{
+            alert("Hello, " + name + "!")
+        }
+        document.querySelector('#result').innerHTML = "Hello " + name + "!"
+    }
+</script>
+{% endblock %}
+
+
+{% extends 'base.html' %}
+{% block body %}
+<p>Let's take a look at some tech stocks today</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Last Price</th>
+        </tr>
+    </thead>
+    <tr>
+        <th scope="row">MSFT</th>
+        <td>Microsoft Corporation</td>
+        <td>151.4</td>
+    </tr>
+    <tr>
+        <th scope="row">APPL</th>
+        <td>Apple Inc.</td>
+        <td>254.17</td>
+    </tr>
+    
+</table>
+<p>Enter your name below to be greeted: </p>
+<form onsubmit="greet(); return false;">
+    <input type="text" id="name">
+    <input type="submit">
+</form>
+<div id="result">
+    Hello!
+</div>
+<p>Want to change the background? Select one of these buttons below</p>
+<button id="red">Red</button>
+<button id="green">Green</button>
+<button id="blue">Blue</button>
+<button id="white">Revert</button>
+
+<script>
+    let body = document.querySelector("body")
+    document.querySelector('#red').onclick = function(){
+        body.style.backgroundColor = "red"
+    }
+    document.querySelector('#blue').onclick = function(){
+        body.style.backgroundColor = "blue"
+    }
+    document.querySelector('#green').onclick = function(){
+        body.style.backgroundColor = "green"
+    }
+    document.querySelector('#white').onclick = function(){
+        body.style.backgroundColor = "white"
+    }
+</script>
+
+
+{% endblock %}
